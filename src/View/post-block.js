@@ -5,8 +5,8 @@ export default (query, uid) => {
     const containerPost = document.querySelector('#containerPost')
     containerPost.innerHTML = '';
     
-    
     query.forEach((doc) => { //data() del obj de los post
+        console.log(doc.data())
         if ((uid === doc.data().uidUsuario && doc.data().privacidad === 'Privado') || doc.data().privacidad === 'Público') {
             containerPost.innerHTML += `
             <form id='formPost' class='textareas'>

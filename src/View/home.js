@@ -14,6 +14,7 @@ export default () => {
         <p id='parrafo'></p>
         <input id = 'email' type= 'email' class= 'form_input' placeholder='email'>
         <input id = 'password' type= 'password' class= 'form_input' placeholder='password'>
+        
         <button id= 'button' type= 'button' class= 'form_button'>Log in</button>
         <p class = 'form_parrafo'>También puedes ingresar con: </p>
         <img id ='google' src="img/busqueda.png">

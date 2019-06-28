@@ -52,10 +52,11 @@ export const postFirestore = (obj) => {
     const error = document.getElementById('msmError')
     const fecha = new Date();
 
-    let options = {
+   /*  let options = {
         year: 'numeric', month: 'short', day: 'numeric',
         hour: 'numeric', minute: 'numeric',
     };
+    `${fecha.toLocaleDateString("es-ES", options)}` */
 
     if (post.length === 0 || estado.length === 0) {
         return error.innerHTML = 'Escribe tu post y/o elige el estado'
@@ -67,7 +68,7 @@ export const postFirestore = (obj) => {
         uidUsuario: dataUser.uid,
         name: obj.name,
         privacidad: estado,
-        weather: `${fecha.toLocaleDateString("es-ES", options)}`
+        weather: `${fecha}`
     };
     databasePost(objPost)
     document.getElementById('post').value = '';
