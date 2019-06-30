@@ -23,5 +23,6 @@ export const deleteData = (id) => {
 } 
 
 export const readData = (callbackTemplate) => {
-    return firebase.firestore().collection("notes").orderBy("weather", "desc").onSnapshot(callbackTemplate);
+    return firebase.firestore().collection("notes").orderBy("createdAt", "desc").onSnapshot(callbackTemplate);
 }
+

@@ -1,6 +1,6 @@
 import { logIn, createUser, currentUs } from '../firebase.js';
 import { errorLogin, errorRegister } from './error.js';
-import { editFirestore, collectionUser, databasePost } from '../firestore.js'
+import { editFirestore, collectionUser, databasePost} from '../firestore.js'
 
 export const changeHash = (hash) => {
     window.location.hash = hash;
@@ -52,23 +52,22 @@ export const postFirestore = (obj) => {
     const error = document.getElementById('msmError')
     const fecha = new Date();
 
-   /*  let options = {
-        year: 'numeric', month: 'short', day: 'numeric',
-        hour: 'numeric', minute: 'numeric',
+     const options = {
+        year: 'numeric', month: 'short', day: 'numeric', hour: 'numeric', minute: 'numeric'
     };
-    `${fecha.toLocaleDateString("es-ES", options)}` */
-
+    /*`${fecha.toLocaleDateString("es-ES", options)}` */
     if (post.length === 0 || estado.length === 0) {
         return error.innerHTML = 'Escribe tu post y/o elige el estado'
     }
 
     const dataUser = currentUs()
     const objPost = {
+        createdAt: firebase.firestore.FieldValue.serverTimestamp(),
         post: post,
         uidUsuario: dataUser.uid,
         name: obj.name,
         privacidad: estado,
-        weather: `${fecha}`
+        weather: `${fecha.toLocaleDateString("es-ES", options)}`
     };
     databasePost(objPost)
     document.getElementById('post').value = '';
